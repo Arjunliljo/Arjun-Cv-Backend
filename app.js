@@ -28,11 +28,28 @@ app.post("/send-email", async (req, res) => {
     },
   });
 
+  // let mailOptions = {
+  //   from: email,
+  //   to: "arjun7180@gmail.com",
+  //   subject,
+  //   text: `You have received a new message from your portfolio contact form.\n\nName: ${name}\nEmail: ${email}\nMessage:\n${message}`,
+  // };
+
   let mailOptions = {
     from: email,
     to: "arjun7180@gmail.com",
-    subject,
-    text: `You have received a new message from your portfolio contact form.\n\nName: ${name}\nEmail: ${email}\nMessage:\n${message}`,
+    subject: subject,
+    html: `
+      <html>
+        <body style="font-family: Arial, sans-serif; padding: 20px;">
+          <h2 style="color: #333;">New Message from Portfolio Contact Form</h2>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Message:</strong></p>
+          <p style="padding: 10px; background-color: #f4f4f4; border-left: 4px solid #3498db;">${message}</p>
+        </body>
+      </html>
+    `,
   };
 
   try {
