@@ -41,12 +41,30 @@ app.post("/send-email", async (req, res) => {
     subject: subject,
     html: `
       <html>
-        <body style="font-family: Arial, sans-serif; padding: 20px;">
+        <head>
+          <style>
+            body {
+              font-family: Arial, sans-serif;
+              font-size: 18px; /* Adjust the overall font size */
+              line-height: 1.6; /* Adjust the line height for better readability */
+              padding: 20px;
+            }
+            .message {
+              padding: 10px;
+              line-height: 1.8;
+              background-color: #f4f4f4;
+              border-left: 4px solid #3498db;
+              font-size: 18px; /* Increase font size for the message */
+              margin-top: 10px; /* Add some space above the message */
+            }
+          </style>
+        </head>
+        <body>
           <h2 style="color: #333;">New Message from Portfolio Contact Form</h2>
-          <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Message:</strong></p>
-          <p style="padding: 10px; background-color: #f4f4f4; border-left: 4px solid #3498db; font-size:18px">${message}</p>
+          <p style="font-size: 20px;"><strong>Name:</strong> ${name}</p>
+          <p style="font-size: 20px;"><strong>Email:</strong> ${email}</p>
+          <p style="font-size: 20px;"><strong>Message:</strong></p>
+          <div class="message">${message}</div>
         </body>
       </html>
     `,
