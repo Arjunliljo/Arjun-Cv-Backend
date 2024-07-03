@@ -46,7 +46,7 @@ app.post("/send-email", async (req, res) => {
           <p><strong>Name:</strong> ${name}</p>
           <p><strong>Email:</strong> ${email}</p>
           <p><strong>Message:</strong></p>
-          <p style="padding: 10px; background-color: #f4f4f4; border-left: 4px solid #3498db;">${message}</p>
+          <p style="padding: 10px; background-color: #f4f4f4; border-left: 4px solid #3498db; font-size:18px">${message}</p>
         </body>
       </html>
     `,
