@@ -6,8 +6,16 @@ const cors = require("cors");
 app.use(express.json());
 app.use(cors());
 
+app.get("/", (req, res) => {
+  res.send("hi");
+});
+
 app.post("/send-email", async (req, res) => {
-  const { name, email, message } = req.body;
+  const { name, email, message, isHire } = req.body;
+
+  const subject = isHire
+    ? `${name} interested in hiring you`
+    : `${name} wants to say hi`;
 
   // Create a transporter
   let transporter = nodemailer.createTransport({
@@ -23,7 +31,7 @@ app.post("/send-email", async (req, res) => {
   let mailOptions = {
     from: email,
     to: "arjun7180@gmail.com",
-    subject: `Contacted ${name} from website`,
+    subject,
     text: `You have received a new message from your portfolio contact form.\n\nName: ${name}\nEmail: ${email}\nMessage:\n${message}`,
   };
 
